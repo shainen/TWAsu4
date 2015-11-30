@@ -4,7 +4,7 @@
 (*All*)
 
 
-SetDirectory["/Users/shainen/Dropbox/Research/random clusters/3 site/TWAsu4"];
+SetDirectory[NotebookDirectory[]];
 
 
 <<const.wl
