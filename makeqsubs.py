@@ -34,6 +34,6 @@ rm -r ${prj}
 """)
 
 for rr in map(str,xrange(numruns)):
-    with open(runname+"r_"+rr+".qsub", "w") as f:
+    with open("../"+runname+"r_"+rr+".qsub", "w") as f:
         f.write(qsubfile.substitute(run=rr,rname=runname,prj=project))
 

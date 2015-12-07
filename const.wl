@@ -5,10 +5,16 @@ steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=10;
+runs=1000;
 
 
 length=12;
+
+
+initspin={2,2,2,2,2,1,2,1,1,1,1,1};
+
+
+(*initspin={2,1};*)
 
 
 bsites=Range[1,length-1,2];
@@ -34,6 +40,3 @@ j[4]=1;
 
 
 randfields=fieldsW5;
-
-
-initspin={2,2,2,2,2,1,2,1,1,1,1,1};
