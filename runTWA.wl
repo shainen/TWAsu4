@@ -7,7 +7,7 @@
 (*SetDirectory[NotebookDirectory[]]*)
 
 
-SetDirectory[Directory[]<>"/TWAsu4"];
+(*SetDirectory[Directory[]<>"/TWAsu4"];*)
 
 
 <<const.wl
@@ -17,6 +17,9 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 
 
 <<dynfunc.wl
+
+
+<<runfuncs.wl
 
 
 (*<<XXZhameqns.wl*)
@@ -35,12 +38,9 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 (*run TWA*)
 
 
-(*eachTWA2 = Table[solv = NDSolveValue[Flatten[{eqall2, initsSpCoh[rr]}], Flatten[Table[cS[addl[ss]][sp], {ss, length}, {sp, 3, 3}]], {t, 0, tmax}]; {(Through[solv[#]] & /@ times)\[Transpose], Total[(Through[solv[#]] Through[solv[0]] & /@ times)\[Transpose]]/length}, {rr, runs}];
-fullTWA2 = Total[norm^length metricperrun eachTWA2]/runs;*)
-
-
-eachTWA4=Table[solv=NDSolveValue[Flatten[{eqall4,initsSingleSpin[rr],initsBiSpin[rr]}],Flatten[Table[cS[addl[ss]][sp],{ss,length},{sp,3,3}]],{t,0,tmax}];{(Through[solv[#]]&/@times)\[Transpose],Total[(Through[solv[#]]Through[solv[0]]&/@times)\[Transpose]]/length},{rr,runs}];
-fullTWA4=Total[wignerWeight eachTWA4]/runs;
+start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSingleSpin[1],initsBiSpin[1]}],Flatten[Table[cS[addl[ss]][sp],{ss,length},{sp,3,3}]],{t,0,tmax}];
+fullTWA4=0;
+Table[AddTo[fullTWA4,singleRun[start,Flatten[{initsSingleSpin[rr],initsBiSpin[rr]}]]/runs];,{rr,runs}];//AbsoluteTiming
 
 
 mmu=MaxMemoryUsed[]/10.^6;
