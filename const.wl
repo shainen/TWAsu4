@@ -5,7 +5,7 @@ steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=1000;
+runs=100;
 
 
 length=12;

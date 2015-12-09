@@ -7,7 +7,7 @@
 (*SetDirectory[NotebookDirectory[]]*)
 
 
-(*SetDirectory[Directory[]<>"/TWAsu4"];*)
+SetDirectory[Directory[]<>"/TWAsu4"];
 
 
 <<const.wl
@@ -40,7 +40,7 @@
 
 start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSingleSpin[1],initsBiSpin[1]}],Flatten[Table[cS[addl[ss]][sp],{ss,length},{sp,3,3}]],{t,0,tmax}];
 fullTWA4=0;
-Table[AddTo[fullTWA4,singleRun[start,Flatten[{initsSingleSpin[rr],initsBiSpin[rr]}]]/runs];,{rr,runs}];//AbsoluteTiming
+Table[AddTo[fullTWA4,wignerWeight[[rr]]singleRun[start,Flatten[{initsSingleSpin[rr],initsBiSpin[rr]}]]/runs];,{rr,runs}];
 
 
 mmu=MaxMemoryUsed[]/10.^6;
