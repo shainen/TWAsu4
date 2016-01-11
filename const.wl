@@ -5,16 +5,19 @@ steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=100;
+runs=1000;
 
 
-length=12;
+(*length=12;*)
 
 
-initspin={2,2,2,2,2,1,2,1,1,1,1,1};
+(*initspin={2,2,2,2,2,1,2,1,1,1,1,1};*)
 
 
-(*initspin={2,1};*)
+length=2;
+
+
+initspin={1,2};
 
 
 bsites=Range[1,length-1,2];
@@ -29,7 +32,10 @@ ssites=Complement[Range[length],bsites,addl/@(bsites+1)];
 j=-1;
 
 
-randfields=fieldsW5;
+(*randfields=fieldsW5;*)
+
+
+randfields={-1,0};
 
 
 (*j[1]=0.5;
