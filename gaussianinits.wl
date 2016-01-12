@@ -35,6 +35,9 @@ initsSforB:=Table[cS[addl[ss]][sp][0]==random[spinmean[[initspin[[addl[ss]]],sp]
 initsS:=Table[cS[addl[ss]][sp][0]==random[spinmean[[initspin[[addl[ss]]],sp]],spincov[[initspin[[addl[ss]]],sp,sp]]],{ss,length},{sp,3}]
 
 
+initsSingleSpin[rr_] := {}
+
+
 (* ::Subsubsection:: *)
 (*bispins*)
 
@@ -77,3 +80,6 @@ initsrot=Table[random[rotmean[[ss,bv]],rotcov[[ss,bv]]],{ss,length},{bv,15}];
 initsorigbasis=MapThread[Dot,{Transpose[rotmat,{1,3,2}],initsrot},1];
 Table[su4varnames[addl[ss]][[bi]][0]==initsorigbasis[[ss,bi]],{ss,bsites},{bi,15}]
 )
+
+
+initsBiSpin[rr_] := initsB

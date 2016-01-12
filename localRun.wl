@@ -32,13 +32,16 @@ SetDirectory[NotebookDirectory[]]
 <<heiswrfham.wl
 
 
+<<gaussianinits.wl
+
+
 (*<<su2cohinits.wl*)
 
 
 (*<<su4cohinits.wl*)
 
 
-<<su4cohinitsGaussian.wl
+(*<<su4cohinitsGaussian.wl*)
 
 
 (*<<su4cohinitsPolarExp.wl*)
@@ -73,4 +76,4 @@ mmu=MaxMemoryUsed[]/10.^6
 (*SetDirectory[ParentDirectory[]];*)
 
 
-(*Save["12site.dat",{mmu,fullTWA4}];*)
+Save["4site.dat",{mmu,TWASingle,TWABi}];
