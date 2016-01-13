@@ -25,13 +25,16 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 (*<<XXZhameqns.wl*)
 
 
-<<heiswrfham.wl
+(*<<heiswrfham.wl*)
 
 
-<<su2cohinits.wl
+<<heiswrfhamForSxStart.wl
 
 
-(*<<su4cohinits.wl*)
+(*<<su2cohinits.wl*)
+
+
+<<su4cohinits.wl
 
 
 (*<<su4cohinitsGaussian.wl*)

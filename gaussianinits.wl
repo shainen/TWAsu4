@@ -7,12 +7,6 @@
 random[mean_,var_]:=If[var!=0,RandomVariate[NormalDistribution[mean,Sqrt[var]]],mean]
 
 
-random[mean_,var_]:=If[var!=0,RandomVariate[NormalDistribution[mean,var]],mean]
-
-
-(*random[mean_,var_]:=mean*)
-
-
 (* ::Subsubsection:: *)
 (*spins*)
 

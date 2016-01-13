@@ -29,16 +29,19 @@ SetDirectory[NotebookDirectory[]]
 (*<<XXZhameqns.wl*)
 
 
-<<heiswrfham.wl
+(*<<heiswrfham.wl*)
 
 
-<<gaussianinits.wl
+<<heiswrfhamForSxStart.wl
+
+
+(*<<gaussianinits.wl*)
 
 
 (*<<su2cohinits.wl*)
 
 
-(*<<su4cohinits.wl*)
+<<su4cohinits.wl
 
 
 (*<<su4cohinitsGaussian.wl*)
@@ -63,7 +66,7 @@ Dynamic[rr]
 
 start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSingleSpin[1],initsBiSpin[1]}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}],Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]}],{t,0,tmax}];
 fullTWA4=0;
-Table[AddTo[fullTWA4,(*wignerWeight[[rr]] *)singleRun[start,Flatten[{initsSingleSpin[rr],initsBiSpin[rr]}]]/runs];,{rr,runs}];//AbsoluteTiming
+Table[AddTo[fullTWA4,wignerWeight[[rr]] singleRun[start,Flatten[{initsSingleSpin[rr],initsBiSpin[rr]}]]/runs];,{rr,runs}];//AbsoluteTiming
 
 
 TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose];
@@ -76,4 +79,4 @@ mmu=MaxMemoryUsed[]/10.^6
 (*SetDirectory[ParentDirectory[]];*)
 
 
-Save["4site.dat",{mmu,TWASingle,TWABi}];
+(*Save["4site.dat",{mmu,TWASingle,TWABi}];*)

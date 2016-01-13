@@ -48,7 +48,7 @@ randomThetaSu4=RandomVariate[#,{runs,numbvars}]&/@probFromMeasure;
 randomPhiSu4=RandomReal[{0,2\[Pi]},{3,runs,numbvars}];
 
 
-biSpinInitConfig=FromDigits[initspin[[#;;addl[#+1]]],2]-2&/@bsites;
+biSpinInitConfig=FromDigits[initspin[[{#,addl[#+1]}]],2]-2&/@bsites;
 
 
 wignerWeight=Times@@@(wigNorm metric[randomThetaSu4[[1]]]);
