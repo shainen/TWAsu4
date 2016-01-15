@@ -59,26 +59,26 @@ QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];
 
 
 <<gaussianinitssu2.wl
-TWASp[SU2]=TWASU2Spins;
+TWASpSU2=TWASU2Spins;
 
 
 <<gaussianinits.wl
-TWASp[gaus]=TWASU4Spins;
+TWASpgaus=TWASU4Spins;
 
 
 <<su4cohinits.wl
-TWASp[coh]=TWASU4SpinsWW;
+TWASpcoh=TWASU4SpinsWW;
 
 
 runs=1;
 bsites={1,3};
 <<XXZhameqns.wl
 <<deltainits.wl
-TWASp[delta13]=TWASU4Spins;
+TWASpdelta13=TWASU4Spins;
 bsites={2,4};
 <<XXZhameqns.wl
 <<deltainits.wl
-TWASp[delta24]=TWASU4Spins;
+TWASpdelta24=TWASU4Spins;
 
 
 mmu=MaxMemoryUsed[]/10.^6;
