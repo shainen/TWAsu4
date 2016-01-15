@@ -5,7 +5,7 @@ steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=1000;
+runs=100;
 
 
 (*length=12;*)
@@ -17,10 +17,13 @@ runs=1000;
 length=4;
 
 
+fisp=3;
+
+
 initspin={1,1,1,1};
 
 
-bsites=Range[2,length,2];
+bsites=Range[1,length,2];
 
 
 numbvars=Length[bsites];
@@ -29,7 +32,7 @@ numbvars=Length[bsites];
 ssites=Complement[Range[length],bsites,addl/@(bsites+1)];
 
 
-j=-1;
+(*j=-1;*)
 
 
 (*randfields=fieldsW5;*)
@@ -38,14 +41,14 @@ j=-1;
 (*randfields={-1,0};*)
 
 
-randfields={-2,-1,1,2};
+(*randfields=.5{-1,-1,1,1};*)
 
 
-(*j[1]=0.5;
-j[2]=0;
+j[1]=2;
+j[2]=0.5;
 j[3]=1;
-j[4]=1;
+j[4]=0.1;
 \[CapitalDelta][1]=-1;
 \[CapitalDelta][2]=-1;
 \[CapitalDelta][3]=-1;
-\[CapitalDelta][4]=-1;*)
+\[CapitalDelta][4]=-1;

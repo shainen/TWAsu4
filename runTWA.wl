@@ -16,6 +16,9 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 <<modfuncs.wl
 
 
+<<QMfunc.wl
+
+
 <<dynfunc.wl
 
 
@@ -28,10 +31,10 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 (*<<heiswrfham.wl*)
 
 
-<<heiswrfhamForSxStart.wl
+(*<<heiswrfhamForSxStart.wl*)
 
 
-<<gaussianinitssu2.wl
+(*<<gaussianinitssu2.wl*)
 
 
 (*<<su2cohinits.wl*)
@@ -43,25 +46,39 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 (*<<su4cohinitsGaussian.wl*)
 
 
+<<XXZhameqns.wl
+
+
 (* ::Subsection:: *)
 (*run TWA*)
 
 
-start=First@NDSolve`ProcessEquations[Flatten[{eqall2,initsSingleSpin[1]}],Flatten[Table[cS[addl[ss]][sp],{ss,length},{sp,3}]],{t,0,tmax}];
-fullTWA2=0;
-Table[AddTo[fullTWA2,singleRun[start,Flatten[{initsSingleSpin[rr]}]]/runs];,{rr,runs}];
+qS[ss_][sp_]:=KroneckerProduct[KroneckerProduct[IdentityMatrix[2^(ss-1)],PauliMatrix[sp]/2],IdentityMatrix[2^(length-ss)]];
+hamQM=Sum[-j[ss](qS[addl[ss]][1].qS[addl[ss+1]][1]+\[CapitalDelta][ss]qS[addl[ss]][2].qS[addl[ss+1]][2]+qS[addl[ss]][3].qS[addl[ss+1]][3])(*+field[[ss]]qS[ss][fisp]*),{ss,1,length}];
+QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];
 
 
-TWASingle=Partition[fullTWA2[[1;;3length]],3]\[Transpose];
+<<gaussianinitssu2.wl
+TWASp[SU2]=TWASU2Spins;
 
 
-(*start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSingleSpin[1],initsBiSpin[1]}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}],Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]}],{t,0,tmax}];
-fullTWA4=0;
-Table[AddTo[fullTWA4,wignerWeight[[rr]]singleRun[start,Flatten[{initsSingleSpin[rr],initsBiSpin[rr]}]]/runs];,{rr,runs}];//AbsoluteTiming*)
+<<gaussianinits.wl
+TWASp[gaus]=TWASU4Spins;
 
 
-(*TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose];
-TWABi=Partition[Partition[fullTWA4[[3length+1;;3length+9numbvars]],9]\[Transpose],3];*)
+<<su4cohinits.wl
+TWASp[coh]=TWASU4SpinsWW;
+
+
+runs=1;
+bsites={1,3};
+<<XXZhameqns.wl
+<<deltainits.wl
+TWASp[delta13]=TWASU4Spins;
+bsites={2,4};
+<<XXZhameqns.wl
+<<deltainits.wl
+TWASp[delta24]=TWASU4Spins;
 
 
 mmu=MaxMemoryUsed[]/10.^6;
@@ -70,4 +87,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["4site.dat",{mmu,TWASingle}];
+Save["4site.dat",{mmu,QMSpin,TWASp[SU2]TWASp[gaus],TWASp[coh],TWASp[delta13],TWASp[delta24]}];

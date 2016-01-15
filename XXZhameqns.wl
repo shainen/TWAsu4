@@ -1,9 +1,9 @@
 (* ::Package:: *)
 
-sscoup[ss_]:=-j[ss](cS[addl[ss]][1][t]cS[addl[ss+1]][1][t]+cS[addl[ss]][2][t]cS[addl[ss+1]][2][t]+\[CapitalDelta][ss]cS[addl[ss]][3][t]cS[addl[ss+1]][3][t])
+sscoup[ss_]:=-j[ss](cS[addl[ss]][1][t]cS[addl[ss+1]][1][t]+\[CapitalDelta][ss]cS[addl[ss]][2][t]cS[addl[ss+1]][2][t]+cS[addl[ss]][3][t]cS[addl[ss+1]][3][t])
 
 
-bcoup[ss_]:=-j[ss](cB[addl[ss]][1,1][t]+cB[addl[ss]][2,2][t]+\[CapitalDelta][ss]cB[addl[ss]][3,3][t])
+bcoup[ss_]:=-j[ss](cB[addl[ss]][1,1][t]+\[CapitalDelta][ss]cB[addl[ss]][2,2][t]+cB[addl[ss]][3,3][t])
 
 
 hamcoupsu4[ss_]:=If[MemberQ[bsites,addl[ss]],bcoup[addl[ss]],sscoup[addl[ss]]]

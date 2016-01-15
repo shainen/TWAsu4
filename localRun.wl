@@ -20,57 +20,59 @@ SetDirectory[NotebookDirectory[]]
 <<modfuncs.wl
 
 
+<<QMfunc.wl
+
+
 <<dynfunc.wl
 
 
 <<runfuncs.wl
 
 
-(*<<XXZhameqns.wl*)
-
-
 (*<<heiswrfham.wl*)
 
 
-<<heiswrfhamForSxStart.wl
-
-
-(*<<gaussianinits.wl*)
-
-
-(*<<su2cohinits.wl*)
-
-
-<<su4cohinits.wl
-
-
-(*<<su4cohinitsGaussian.wl*)
-
-
-(*<<su4cohinitsPolarExp.wl*)
-
-
-(*<<deltainits.wl*)
+<<XXZhameqns.wl
 
 
 (* ::Subsection:: *)
 (*run TWA*)
 
 
-(*eachTWA2 = Table[solv = NDSolveValue[Flatten[{eqall2, initsSpCoh[rr]}], Flatten[Table[cS[addl[ss]][sp], {ss, length}, {sp, 3, 3}]], {t, 0, tmax}]; {(Through[solv[#]] & /@ times)\[Transpose], Total[(Through[solv[#]] Through[solv[0]] & /@ times)\[Transpose]]/length}, {rr, runs}];//AbsoluteTiming
-fullTWA2 = Total[norm^length metricperrun eachTWA2]/runs;*)
+qS[ss_][sp_]:=KroneckerProduct[KroneckerProduct[IdentityMatrix[2^(ss-1)],PauliMatrix[sp]/2],IdentityMatrix[2^(length-ss)]];
+hamQM=Sum[-j[ss](qS[addl[ss]][1].qS[addl[ss+1]][1]+\[CapitalDelta][ss]qS[addl[ss]][2].qS[addl[ss+1]][2]+qS[addl[ss]][3].qS[addl[ss+1]][3])(*+field[[ss]]qS[ss][fisp]*),{ss,1,length}];
+QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];
 
 
 Dynamic[rr]
 
 
-start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSingleSpin[1],initsBiSpin[1]}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}],Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]}],{t,0,tmax}];
-fullTWA4=0;
-Table[AddTo[fullTWA4,wignerWeight[[rr]] singleRun[start,Flatten[{initsSingleSpin[rr],initsBiSpin[rr]}]]/runs];,{rr,runs}];//AbsoluteTiming
+<<gaussianinitssu2.wl
+TWASp[SU2]=TWASU2Spins;
 
 
-TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose];
-TWABi=Partition[Partition[fullTWA4[[3length+1;;3length+9numbvars]],9]\[Transpose],3];
+<<gaussianinits.wl
+TWASp[gaus]=TWASU4Spins;
+
+
+<<su4cohinits.wl
+TWASp[coh]=TWASU4SpinsWW;
+
+
+(*runs=1;
+<<deltainits.wl
+TWASp[delta13]=TWASU4Spins;*)
+
+
+runs=1;
+bsites={1,3};
+<<XXZhameqns.wl
+<<deltainits.wl
+TWASp[delta13]=TWASU4Spins;
+bsites={2,4};
+<<XXZhameqns.wl
+<<deltainits.wl
+TWASp[delta24]=TWASU4Spins;
 
 
 mmu=MaxMemoryUsed[]/10.^6
