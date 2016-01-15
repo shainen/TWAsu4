@@ -87,4 +87,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["4site.dat",{mmu,QMSpin,TWASp[SU2]TWASp[gaus],TWASp[coh],TWASp[delta13],TWASp[delta24]}];
+Save["4site.dat",{mmu,QMSpin,TWASpSU2,TWASpgaus,TWASpcoh,TWASpdelta13,TWASpdelta24}];
