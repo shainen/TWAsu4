@@ -26,6 +26,15 @@ TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose]
 )
 
 
+TWASU4SpinsGau:=(
+start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSforB,initsB}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}],Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]}],{t,0,tmax}];
+fullTWA4=0;
+Table[AddTo[fullTWA4,(*wignerWeight[[rr]]*) singleRun[start,Flatten[{initsSforB,initsB}]]/runs];,{rr,runs}];
+TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose]
+(*TWABi=Partition[Partition[fullTWA4[[3length+1;;3length+9numbvars]],9]\[Transpose],3];*)
+)
+
+
 TWASU4SpinsWW:=(
 start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSingleSpin[1],initsBiSpin[1]}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}],Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]}],{t,0,tmax}];
 fullTWA4=0;

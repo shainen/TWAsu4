@@ -52,19 +52,19 @@ TWASp[SU2]=TWASU2Spins;
 
 
 <<gaussianinits.wl
-TWASp[gaus]=TWASU4Spins;
+TWASp[gaus]=TWASU4SpinsGau;
 
 
-<<su4cohinits.wl
-TWASp[coh]=TWASU4SpinsWW;
-
-
-(*runs=1;
-<<deltainits.wl
-TWASp[delta13]=TWASU4Spins;*)
+(*<<su4cohinits.wl
+TWASp[coh]=TWASU4SpinsWW;*)
 
 
 runs=1;
+<<deltainits.wl
+TWASp[delta13]=TWASU4Spins;
+
+
+(*runs=1;
 bsites={1,3};
 <<XXZhameqns.wl
 <<deltainits.wl
@@ -72,7 +72,7 @@ TWASp[delta13]=TWASU4Spins;
 bsites={2,4};
 <<XXZhameqns.wl
 <<deltainits.wl
-TWASp[delta24]=TWASU4Spins;
+TWASp[delta24]=TWASU4Spins;*)
 
 
 mmu=MaxMemoryUsed[]/10.^6

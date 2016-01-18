@@ -63,14 +63,15 @@ TWASpSU2=TWASU2Spins;
 
 
 <<gaussianinits.wl
-TWASpgaus=TWASU4Spins;
-
-
-<<su4cohinits.wl
-TWASpcoh=TWASU4SpinsWW;
+TWASpgaus=TWASU4SpinsGau;
 
 
 runs=1;
+<<deltainits.wl
+TWASpdelta=TWASU4Spins;
+
+
+(*runs=1;
 bsites={1,3};
 <<XXZhameqns.wl
 <<deltainits.wl
@@ -78,7 +79,7 @@ TWASpdelta13=TWASU4Spins;
 bsites={2,4};
 <<XXZhameqns.wl
 <<deltainits.wl
-TWASpdelta24=TWASU4Spins;
+TWASpdelta24=TWASU4Spins;*)
 
 
 mmu=MaxMemoryUsed[]/10.^6;
@@ -87,4 +88,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["4site.dat",{mmu,QMSpin,TWASpSU2,TWASpgaus,TWASpcoh,TWASpdelta13,TWASpdelta24}];
+Save["4site.dat",{mmu,QMSpin,TWASpSU2,TWASpgaus,TWASpdelta}];
