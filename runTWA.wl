@@ -10,10 +10,10 @@
 SetDirectory[Directory[]<>"/TWAsu4"];
 
 
-<<const.wl
-
-
 <<modfuncs.wl
+
+
+<<const.wl
 
 
 <<QMfunc.wl

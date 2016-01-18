@@ -48,8 +48,8 @@ ssites=Complement[Range[length],bsites,addl/@(bsites+1)];
 
 
 j[1]=1;
-j[2]=1;
-j[3]=2j[2];
+j[2]=2;
+j[3]=0.9j[2];
 j[4]=0;
 \[CapitalDelta][1]=-1;
 \[CapitalDelta][2]=-1;
