@@ -16,7 +16,7 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 <<const.wl
 
 
-<<QMfunc.wl
+(*<<QMfunc.wl*)
 
 
 <<dynfunc.wl
@@ -28,7 +28,7 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 (*<<XXZhameqns.wl*)
 
 
-(*<<heiswrfham.wl*)
+<<heiswrfham.wl
 
 
 (*<<heiswrfhamForSxStart.wl*)
@@ -46,16 +46,16 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 (*<<su4cohinitsGaussian.wl*)
 
 
-<<XXZhameqns.wl
+(*<<XXZhameqns.wl*)
 
 
 (* ::Subsection:: *)
 (*run TWA*)
 
 
-qS[ss_][sp_]:=KroneckerProduct[KroneckerProduct[IdentityMatrix[2^(ss-1)],PauliMatrix[sp]/2],IdentityMatrix[2^(length-ss)]];
+(*qS[ss_][sp_]:=KroneckerProduct[KroneckerProduct[IdentityMatrix[2^(ss-1)],PauliMatrix[sp]/2],IdentityMatrix[2^(length-ss)]];
 hamQM=Sum[-j[ss](qS[addl[ss]][1].qS[addl[ss+1]][1]+\[CapitalDelta][ss]qS[addl[ss]][2].qS[addl[ss+1]][2]+qS[addl[ss]][3].qS[addl[ss+1]][3])(*+field[[ss]]qS[ss][fisp]*),{ss,1,length}];
-QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];
+QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];*)
 
 
 <<gaussianinitssu2.wl
@@ -88,4 +88,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["4site.dat",{mmu,QMSpin,TWASpSU2,TWASpgaus,TWASpdelta}];
+Save["4site.dat",{mmu,TWASpSU2,TWASpgaus,TWASpdelta}];

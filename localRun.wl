@@ -20,7 +20,7 @@ SetDirectory[NotebookDirectory[]]
 <<modfuncs.wl
 
 
-<<QMfunc.wl
+(*<<QMfunc.wl*)
 
 
 <<dynfunc.wl
@@ -29,19 +29,19 @@ SetDirectory[NotebookDirectory[]]
 <<runfuncs.wl
 
 
-(*<<heiswrfham.wl*)
+<<heiswrfham.wl
 
 
-<<XXZhameqns.wl
+(*<<XXZhameqns.wl*)
 
 
 (* ::Subsection:: *)
 (*run TWA*)
 
 
-qS[ss_][sp_]:=KroneckerProduct[KroneckerProduct[IdentityMatrix[2^(ss-1)],PauliMatrix[sp]/2],IdentityMatrix[2^(length-ss)]];
+(*qS[ss_][sp_]:=KroneckerProduct[KroneckerProduct[IdentityMatrix[2^(ss-1)],PauliMatrix[sp]/2],IdentityMatrix[2^(length-ss)]];
 hamQM=Sum[-j[ss](qS[addl[ss]][1].qS[addl[ss+1]][1]+\[CapitalDelta][ss]qS[addl[ss]][2].qS[addl[ss+1]][2]+qS[addl[ss]][3].qS[addl[ss+1]][3])(*+field[[ss]]qS[ss][fisp]*),{ss,1,length}];
-QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];
+QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];*)
 
 
 Dynamic[rr]
@@ -61,7 +61,7 @@ TWASp[coh]=TWASU4SpinsWW;*)
 
 runs=1;
 <<deltainits.wl
-TWASp[delta13]=TWASU4Spins;
+TWASp[delta]=TWASU4Spins;
 
 
 (*runs=1;
