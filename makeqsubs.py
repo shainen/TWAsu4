@@ -1,8 +1,6 @@
 from string import Template
 from os import getcwd
 
-numruns=10
-
 project=getcwd().split('/')[-1]
 
 runname=getcwd().split('/')[-2]
@@ -14,7 +12,7 @@ qsubfile = Template("""
 #PBS -V
 
 RUN_NAME=${rname}
-SCRATCH_DIR=/data/$$USER/$$RUN_NAME/r${run}
+SCRATCH_DIR=/data/$$USER/$$RUN_NAME/r$$PBS_ARRAYID
 LOCAL_DIR=/home/shainen/randclust/build
 
 mkdir -p $$SCRATCH_DIR
@@ -33,7 +31,7 @@ time math -script ${prj}/runTWA.wl
 rm -r ${prj} 
 """)
 
-for rr in map(str,xrange(numruns)):
-    with open("../"+runname+"r_"+rr+".qsub", "w") as f:
-        f.write(qsubfile.substitute(run=rr,rname=runname,prj=project))
+
+with open("../"+runname+".qsub", "w") as f:
+    f.write(qsubfile.substitute(rname=runname,prj=project))
 
