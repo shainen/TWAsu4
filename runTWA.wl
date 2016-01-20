@@ -58,17 +58,17 @@ hamQM=Sum[-j[ss](qS[addl[ss]][1].qS[addl[ss+1]][1]+\[CapitalDelta][ss]qS[addl[ss
 QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];*)
 
 
-<<gaussianinitssu2.wl
-TWASpSU2=TWASU2Spins;
+(*<<gaussianinitssu2.wl
+TWASpSU2=TWASU2Spins;*)
 
 
-<<gaussianinits.wl
-TWASpgaus=TWASU4SpinsGau;
+<<su4cohinits.wl
+TWASpcoh=TWASU4Spins;
 
 
-runs=1;
+(*runs=1;
 <<deltainits.wl
-TWASpdelta=TWASU4Spins;
+TWASpdelta=TWASU4Spins;*)
 
 
 (*runs=1;
@@ -88,4 +88,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["4site.dat",{mmu,TWASpSU2,TWASpgaus,TWASpdelta}];
+Save["4site.dat",{mmu,TWASpcoh}];
