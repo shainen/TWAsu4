@@ -62,8 +62,8 @@ QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];*)
 TWASpSU2=TWASU2Spins;*)
 
 
-<<su4cohinits.wl
-TWASpcoh=TWASU4Spins;
+<<gaussianinits.wl
+TWASpgaus=TWASU4SpinsGau;
 
 
 (*runs=1;
@@ -88,4 +88,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["4site.dat",{mmu,TWASpcoh}];
+Save["4site.dat",{mmu,TWASpgaus}];

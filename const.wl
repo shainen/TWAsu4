@@ -26,10 +26,10 @@ initspin={1,1,1,1,2,2,2,2};
 initspin={2,2,2,2,2,1,2,1,1,1,1,1};
 
 
-bsites=Range[1,length,2];
+(*bsites=Range[1,length,2];*)
 
 
-(*bsites={1};*)
+bsites={5,7,12};
 
 
 numbvars=Length[bsites];
