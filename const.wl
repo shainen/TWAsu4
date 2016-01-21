@@ -41,7 +41,7 @@ ssites=Complement[Range[length],bsites,addl/@(bsites+1)];
 j=1;
 
 
-randfields=fieldsW5;
+randfields=randfield2;
 
 
 (*randfields={-1,0};*)
