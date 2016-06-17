@@ -47,12 +47,17 @@ QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];*)
 Dynamic[rr]
 
 
-<<gaussianinitssu2.wl
-TWASp[SU2]=TWASU2Spins;
+(*<<gaussianinitssu2.wl
+TWASp[SU2]=TWASU2Spins;*)
 
 
-<<gaussianinits.wl
-TWASp[gaus]=TWASU4SpinsGau;
+(*<<gaussianinits.wl
+TWASp[gaus]=TWASU4SpinsGau;*)
+
+
+<<initsDiscSU2SU4.wl
+TWASp[discSU2]=TWASU2Disc;
+TWASp[discSU4]=TWASU4Disc;
 
 
 (*<<su4cohinits.wl
