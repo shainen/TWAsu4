@@ -5,7 +5,7 @@ steps=500;
 times=Range[0,tmax,tmax/(steps-1)];
 
 
-runs=10;
+runs=1000;
 
 
 (*length=12;*)
@@ -29,7 +29,7 @@ initspin={2,2,2,2,2,1,2,1,1,1,1,1};
 (*bsites=Range[1,length,2];*)
 
 
-bsites={5,7,12};
+bsites={2,4,6,8,10,12};
 
 
 numbvars=Length[bsites];
