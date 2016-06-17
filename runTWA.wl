@@ -10,6 +10,9 @@
 SetDirectory[Directory[]<>"/TWAsu4"];
 
 
+<<randomSeed.wl
+
+
 <<modfuncs.wl
 
 
