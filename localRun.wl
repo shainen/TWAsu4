@@ -55,7 +55,7 @@ TWASp[SU2]=TWASU2Spins;*)
 TWASp[gaus]=TWASU4SpinsGau;*)
 
 
-<<initsDiscSU2SU4.wl
+<<initsDiscSU2SU4uncor.wl
 TWASp[discSU2]=TWASU2Disc;
 TWASp[discSU4]=TWASU4Disc;
 

@@ -29,7 +29,7 @@ initspin={2,2,2,2,2,1,2,1,1,1,1,1};
 (*bsites=Range[1,length,2];*)
 
 
-bsites={2,4,6,8,10,12};
+bsites=Range[1,length,2];
 
 
 numbvars=Length[bsites];
