@@ -1,11 +1,19 @@
 (* ::Package:: *)
 
-tmax=100;
-steps=500;
-times=Range[0,tmax,tmax/(steps-1)];
+(*tmax=20;
+steps=1000;
+times=Range[0,tmax,tmax/(steps-1)];*)
 
 
-runs=1000;
+tminExp=-2;
+tmaxExp=1.3;
+tmax=10.^tmaxExp;
+steps=1000;
+tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
+times=10.^#&/@tExps;
+
+
+runs=100;
 
 
 (*length=12;*)
@@ -14,16 +22,19 @@ runs=1000;
 (*initspin={2,2,2,2,2,1,2,1,1,1,1,1};*)
 
 
-length=12;
+length=25;
 
 
 fisp=3;
 
 
-initspin={1,1,1,1,2,2,2,2};
+(*initspin={1,1,1,1,2,2,2,2};*)
 
 
-initspin={2,2,2,2,2,1,2,1,1,1,1,1};
+(*initspin={2,2,2,2,2,1,2,1,1,1,1,1};*)
+
+
+initspin=Table[(1-(-1)^n)/2+1,{n,length}];
 
 
 (*bsites=Range[1,length,2];*)
@@ -38,10 +49,10 @@ numbvars=Length[bsites];
 ssites=Complement[Range[length],bsites,addl/@(bsites+1)];
 
 
-j=1;
+(*j=1;*)
 
 
-randfields=fieldsW5;
+(*randfields=fieldsW5;*)
 
 
 (*randfields={-1,0};*)
@@ -61,3 +72,6 @@ j[4]=0;
 
 
 (*Do[j[n]=coup[[n]];\[CapitalDelta][n]=delta[[n]];,{n,length}]*)
+
+
+\[Alpha]=2.5;

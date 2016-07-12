@@ -31,10 +31,13 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 (*<<XXZhameqns.wl*)
 
 
-<<heiswrfham.wl
+(*<<heiswrfham.wl*)
 
 
 (*<<heiswrfhamForSxStart.wl*)
+
+
+<<hamHeis.wl;
 
 
 (*<<gaussianinitssu2.wl*)
@@ -76,7 +79,7 @@ TWASpdelta=TWASU4Spins;*)
 
 <<initsDiscSU2SU4.wl
 TWASpDiscSU2=TWASU2Disc;
-TWASpDiscSU4=TWASU4Disc;
+(*TWASpDiscSU4=TWASU4Disc;*)
 
 
 (*runs=1;
@@ -96,4 +99,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["4site.dat",{mmu,TWASpDiscSU2,TWASpDiscSU4}];
+Save["spinchain.dat",{mmu,TWASpDiscSU2(*,TWASpDiscSU4*)}];

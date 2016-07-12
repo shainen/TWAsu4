@@ -4,7 +4,9 @@ singleRun=Function[{startEq,newInits},
 Block[{newstate=First@NDSolve`Reinitialize[start,newInits],sol},
 NDSolve`Iterate[newstate,tmax];
 sol=NDSolve`ProcessSolutions[newstate][[All,2]];
-(Through[sol[#]]&/@times)\[Transpose]
+spins=Partition[(Through[sol[#]]&/@times)\[Transpose],3]\[Transpose];
+fobs=Table[(-1)^(i+1),{i,length}].(2 spins[[3]]);
+{spins,fobs,fobs^2}
 ]
 ];
 
@@ -48,7 +50,8 @@ TWASU2Disc:=(
 start=First@NDSolve`ProcessEquations[Flatten[{eqall2,initsS}],Flatten[Table[cS[addl[ss]][sp],{ss,length},{sp,3}]],{t,0,tmax}];
 fullTWA2=0;
 Table[AddTo[fullTWA2,(*wignerWeight[[rr]]*) singleRun[start,Flatten[initsS]]/runs];,{rr,runs}];
-TWASingle=Partition[fullTWA2[[1;;3length]],3]\[Transpose]
+qfi=(fullTWA2[[3]]-fullTWA2[[2]]^2)/length;
+{fullTWA2[[1]],qfi}
 )
 
 
