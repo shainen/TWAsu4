@@ -15,7 +15,8 @@ TWASU2Spins:=(
 start=First@NDSolve`ProcessEquations[Flatten[{eqall2,initsSingleSpin[1]}],Flatten[Table[cS[addl[ss]][sp],{ss,length},{sp,3}]],{t,0,tmax}];
 fullTWA2=0;
 Table[AddTo[fullTWA2,(*wignerWeight[[rr]]*) singleRun[start,Flatten[{initsSingleSpin[rr]}]]/runs];,{rr,runs}];
-TWASingle=Partition[fullTWA2[[1;;3length]],3]\[Transpose]
+qfi=(fullTWA2[[3]]-fullTWA2[[2]]^2)/length;
+{fullTWA2[[1]],qfi}
 )
 
 

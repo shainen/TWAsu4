@@ -64,8 +64,8 @@ hamQM=Sum[-j[ss](qS[addl[ss]][1].qS[addl[ss+1]][1]+\[CapitalDelta][ss]qS[addl[ss
 QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];*)
 
 
-(*<<gaussianinitssu2.wl
-TWASpSU2=TWASU2Spins;*)
+<<gaussianinitssu2.wl
+TWASpDiscSU2=TWASU2Spins;
 
 
 (*<<gaussianinits.wl
@@ -77,9 +77,9 @@ TWASpgaus=TWASU4SpinsGau;*)
 TWASpdelta=TWASU4Spins;*)
 
 
-<<initsDiscSU2SU4.wl
+(*<<initsDiscSU2SU4.wl
 TWASpDiscSU2=TWASU2Disc;
-(*TWASpDiscSU4=TWASU4Disc;*)
+(*TWASpDiscSU4=TWASU4Disc;*)*)
 
 
 (*runs=1;
