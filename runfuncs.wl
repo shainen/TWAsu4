@@ -5,7 +5,7 @@ Block[{newstate=First@NDSolve`Reinitialize[start,newInits],sol},
 NDSolve`Iterate[newstate,tmax];
 sol=NDSolve`ProcessSolutions[newstate][[All,2]];
 spins=Partition[(Through[sol[#]]&/@times)\[Transpose],3]\[Transpose];
-fobs=Table[(-1)^(i+1),{i,length}].(2 spins[[3]]);
+fobs=Table[(-1)^(i),{i,length}].(2 spins[[3]]);
 {spins,fobs,fobs^2}
 ]
 ];

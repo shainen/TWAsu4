@@ -13,7 +13,7 @@ tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
 times=10.^#&/@tExps;
 
 
-runs=100;
+runs=10000;
 
 
 (*length=12;*)
@@ -34,7 +34,7 @@ fisp=3;
 (*initspin={2,2,2,2,2,1,2,1,1,1,1,1};*)
 
 
-initspin=Table[(1+(-1)^n)/2+1,{n,length}];
+initspin=Table[(1-(-1)^n)/2+1,{n,length}];
 
 
 (*bsites=Range[1,length,2];*)
