@@ -18,10 +18,13 @@ sscoup[ss_]:=j(cS[addl[ss]][1][t]cS[addl[ss+1]][1][t]+cS[addl[ss]][2][t]cS[addl[
 bcoup[ss_]:=j(cB[addl[ss]][1,1][t]+cB[addl[ss]][2,2][t]+cB[addl[ss]][3,3][t])
 
 
-hamcoupsu4[ss_]:=If[MemberQ[bsites,addl[ss]],bcoup[addl[ss]],sscoup[addl[ss]]]
+(*hamcoupsu2[ss_]:=sscoup[addl[ss]]*)
 
 
-hamcoupsu2[ss_]:=sscoup[addl[ss]]
+hamcoupsu2[ss_]:=If[ss==length,0,sscoup[addl[ss]]]
+
+
+hamcoupsu4[ss_]:=If[MemberQ[bsites,addl[ss]],bcoup[addl[ss]],hamcoupsu2[addl[ss]]]
 
 
 eqss4=Table[cS[addl[ss]][sp]'[t]==sdot[addl[ss],sp,hamself[addl[ss]]+hamcoupsu4[addl[ss-1]]+hamcoupsu4[addl[ss]]],{ss,length},{sp,3}];
