@@ -6,14 +6,14 @@ times=Range[0,tmax,tmax/(steps-1)];*)
 
 
 tminExp=-2;
-tmaxExp=1.3;
+tmaxExp=2;
 tmax=10.^tmaxExp;
 steps=1000;
 tExps=Range[tminExp,tmaxExp,(tmaxExp-tminExp)/(steps-1)];
 times=10.^#&/@tExps;
 
 
-runs=10000;
+runs=10;
 
 
 (*length=12;*)
@@ -22,7 +22,7 @@ runs=10000;
 (*initspin={2,2,2,2,2,1,2,1,1,1,1,1};*)
 
 
-length=25;
+length=18;
 
 
 fisp=3;
@@ -49,7 +49,13 @@ numbvars=Length[bsites];
 ssites=Complement[Range[length],bsites,addl/@(bsites+1)];
 
 
-(*j=1;*)
+j=4;
+
+
+dis=20;
+
+
+randfields=2 RandomReal[{-dis,dis},length];
 
 
 (*randfields=fieldsW5;*)
@@ -74,4 +80,4 @@ j[4]=0;
 (*Do[j[n]=coup[[n]];\[CapitalDelta][n]=delta[[n]];,{n,length}]*)
 
 
-\[Alpha]=2.5;
+(*\[Alpha]=2.5;*)

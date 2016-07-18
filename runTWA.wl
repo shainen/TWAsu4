@@ -4,6 +4,10 @@
 (*All*)
 
 
+(* ::Subsection:: *)
+(*Inits*)
+
+
 (*SetDirectory[NotebookDirectory[]]*)
 
 
@@ -31,13 +35,13 @@ SetDirectory[Directory[]<>"/TWAsu4"];
 (*<<XXZhameqns.wl*)
 
 
-(*<<heiswrfham.wl*)
+<<heiswrfham.wl
 
 
 (*<<heiswrfhamForSxStart.wl*)
 
 
-<<hamHeis.wl;
+(*<<hamHeis.wl;*)
 
 
 (*<<gaussianinitssu2.wl*)
@@ -64,22 +68,27 @@ hamQM=Sum[-j[ss](qS[addl[ss]][1].qS[addl[ss+1]][1]+\[CapitalDelta][ss]qS[addl[ss
 QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];*)
 
 
-(*<<gaussianinitssu2.wl
-TWASpDiscSU2=TWASU2Spins;*)
+<<gaussianinitssu2.wl
+TWASpGauSU2=TWASU2Spins;
 
 
-(*<<gaussianinits.wl
-TWASpgaus=TWASU4SpinsGau;*)
+<<gaussianinits.wl
+TWASpGauSU4=TWASU4SpinsGau;
 
 
-(*runs=1;
-<<deltainits.wl
-TWASpdelta=TWASU4Spins;*)
-
-
-<<initsDiscSU2SU4.wl
+<<initsDiscSU2SU4uncor.wl
 TWASpDiscSU2=TWASU2Disc;
 (*TWASpDiscSU4=TWASU4Disc;*)
+
+
+<<initsDiscSU2SU4uncor.wl
+TWASpDiscSU4=TWASU4Disc;
+(*TWASpDiscSU4=TWASU4Disc;*)
+
+
+runs=1;
+<<deltainits.wl
+TWASpDelta=TWASU4Spins;
 
 
 (*runs=1;
@@ -99,4 +108,4 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["spinchain.dat",{mmu,TWASpDiscSU2(*,TWASpDiscSU4*)}];
+Save["spinchain.dat",{mmu,randfields,TWASpDiscSU2,TWASpDiscSU4,TWASpGauSU2,TWASpGauSU4,TWASpDelta}];

@@ -15,25 +15,28 @@ TWASU2Spins:=(
 start=First@NDSolve`ProcessEquations[Flatten[{eqall2,initsSingleSpin[1]}],Flatten[Table[cS[addl[ss]][sp],{ss,length},{sp,3}]],{t,0,tmax}];
 fullTWA2=0;
 Table[AddTo[fullTWA2,(*wignerWeight[[rr]]*) singleRun[start,Flatten[{initsSingleSpin[rr]}]]/runs];,{rr,runs}];
-qfi=(fullTWA2[[3]]-fullTWA2[[2]]^2)/length;
-{fullTWA2[[1]],qfi}
+(*qfi=(fullTWA2[[3]]-fullTWA2[[2]]^2)/length;
+{fullTWA2[[1]],qfi}*)
+fullTWA2
 )
 
 
 TWASU4Spins:=(
-start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSingleSpin[1],initsBiSpin[1]}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}],Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]}],{t,0,tmax}];
+start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSingleSpin[1],initsBiSpin[1]}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}](*,Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]*)}],{t,0,tmax}];
 fullTWA4=0;
 Table[AddTo[fullTWA4,(*wignerWeight[[rr]]*) singleRun[start,Flatten[{initsSingleSpin[rr],initsBiSpin[rr]}]]/runs];,{rr,runs}];
-TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose]
+fullTWA4
+(*TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose]*)
 (*TWABi=Partition[Partition[fullTWA4[[3length+1;;3length+9numbvars]],9]\[Transpose],3];*)
 )
 
 
 TWASU4SpinsGau:=(
-start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSforB,initsB}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}],Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]}],{t,0,tmax}];
+start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSforB,initsB}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}](*,Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]*)}],{t,0,tmax}];
 fullTWA4=0;
 Table[AddTo[fullTWA4,(*wignerWeight[[rr]]*) singleRun[start,Flatten[{initsSforB,initsB}]]/runs];,{rr,runs}];
-TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose]
+(*TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose]*)
+fullTWA4
 (*TWABi=Partition[Partition[fullTWA4[[3length+1;;3length+9numbvars]],9]\[Transpose],3];*)
 )
 
@@ -51,15 +54,15 @@ TWASU2Disc:=(
 start=First@NDSolve`ProcessEquations[Flatten[{eqall2,initsS}],Flatten[Table[cS[addl[ss]][sp],{ss,length},{sp,3}]],{t,0,tmax}];
 fullTWA2=0;
 Table[AddTo[fullTWA2,(*wignerWeight[[rr]]*) singleRun[start,Flatten[initsS]]/runs];,{rr,runs}];
-qfi=(fullTWA2[[3]]-fullTWA2[[2]]^2)/length;
-{fullTWA2[[1]],qfi}
+fullTWA2
 )
 
 
 TWASU4Disc:=(
-start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSforB,initsB}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}],Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]}],{t,0,tmax}];
+start=First@NDSolve`ProcessEquations[Flatten[{eqall4,initsSforB,initsB}],Flatten[{Table[cS[addl[ss]][sp],{ss,length},{sp,3}](*,Table[cB[addl[ss]][sp1,sp2],{ss,bsites},{sp1,3},{sp2,3}]*)}],{t,0,tmax}];
 fullTWA4=0;
 Table[AddTo[fullTWA4,singleRun[start,Flatten[{initsSforB,initsB}]]/runs];,{rr,runs}];
-TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose]
+fullTWA4
+(*TWASingle=Partition[fullTWA4[[1;;3length]],3]\[Transpose]*)
 (*TWABi=Partition[Partition[fullTWA4[[3length+1;;3length+9numbvars]],9]\[Transpose],3];*)
 )
