@@ -40,7 +40,24 @@ initspin=Table[(1-(-1)^n)/2+1,{n,length}];
 (*bsites=Range[1,length,2];*)
 
 
-bsites=Range[1,length,2];
+dis=20;
+
+
+randfields=2 RandomReal[{-dis,dis},length];
+
+
+diffs=Table[1/Abs[(randfields[[n]]-randfields[[n+1]])],{n,length-1}];
+bsites={};
+While[diffs!=Table[0,{length-1}],
+max=Position[diffs,Max[diffs]][[1,1]];
+AppendTo[bsites,max];
+diffs[[max]]=0;
+If[max!=length-1,diffs[[max+1]]=0];
+If[max!=1,diffs[[max-1]]=0];
+]
+
+
+(*bsites=Range[1,length,2];*)
 
 
 numbvars=Length[bsites];
@@ -50,12 +67,6 @@ ssites=Complement[Range[length],bsites,addl/@(bsites+1)];
 
 
 j=4;
-
-
-dis=20;
-
-
-randfields=2 RandomReal[{-dis,dis},length];
 
 
 (*randfields=fieldsW5;*)
