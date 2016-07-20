@@ -72,8 +72,8 @@ QMSpin=QMSpinsFromHam[length,hamQM,times,initspin,fisp];*)
 TWASpGauSU2=TWASU2Spins;*)
 
 
-<<gaussianinits.wl
-TWASpGauSU4=TWASU4SpinsGau;
+(*<<gaussianinits.wl
+TWASpGauSU4=TWASU4SpinsGau;*)
 
 
 (*<<initsDiscSU2SU4uncor.wl
@@ -86,9 +86,13 @@ TWASpDiscSU4=TWASU4Disc;
 (*TWASpDiscSU4=TWASU4Disc;*)
 
 
-runs=1;
+(*runs=1;
 <<deltainits.wl
-TWASpDelta=TWASU4Spins;
+Do[
+randfields=2 RandomReal[{-d,d},length];
+<<heiswrfham.wl;
+res[d]=TWASU4Spins;
+,{d,{1,2,3,4,5}}]*)
 
 
 (*runs=1;
@@ -108,4 +112,7 @@ mmu=MaxMemoryUsed[]/10.^6;
 SetDirectory[ParentDirectory[]];
 
 
-Save["spinchain.dat",{mmu,randfields,bsites,(*TWASpDiscSU2,*)TWASpDiscSU4,(*TWASpGauSU2,*)TWASpGauSU4,TWASpDelta}];
+allData={mmu,randfields,bsites,(*TWASpDiscSU2,*)TWASpDiscSU4(*,TWASpGauSU2,TWASpGauSU4,TWASpDelta*)};
+
+
+Save["spinchain.dat",allData];
